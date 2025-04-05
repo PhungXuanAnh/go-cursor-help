@@ -77,6 +77,7 @@ CURSOR_BIN_PATHS=(
     "$HOME/.local/bin/cursor"
     "/opt/cursor/cursor"
     "/snap/bin/cursor"
+    "$HOME/.cursor-portal-executable/usr/bin/cursor"
 )
 
 # 找到Cursor安装路径
@@ -120,6 +121,7 @@ find_cursor_resources() {
         "/usr/share/cursor"
         "/opt/cursor"
         "$HOME/.local/share/cursor"
+        "$HOME/.cursor-portal-executable/usr/share/cursor"
     )
     
     for path in "${resource_paths[@]}"; do
@@ -313,8 +315,9 @@ generate_new_config() {
     log_warn "机器码重置选项"
     
     # 使用菜单选择函数询问用户是否重置机器码
-    select_menu_option "是否需要重置机器码? (通常情况下，只修改js文件即可)：" "不重置 - 仅修改js文件即可|重置 - 同时修改配置文件和机器码" 0
-    reset_choice=$?
+    # select_menu_option "是否需要重置机器码? (通常情况下，只修改js文件即可)：" "不重置 - 仅修改js文件即可|重置 - 同时修改配置文件和机器码" 0
+    # reset_choice=$?
+    reset_choice="1"
     
     # 记录日志以便调试
     echo "[INPUT_DEBUG] 机器码重置选项选择: $reset_choice" >> "$LOG_FILE"
