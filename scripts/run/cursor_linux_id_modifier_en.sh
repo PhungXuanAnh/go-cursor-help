@@ -77,7 +77,7 @@ CURSOR_BIN_PATHS=(
     "$HOME/.local/bin/cursor"
     "/opt/cursor/cursor"
     "/snap/bin/cursor"
-    "$HOME/.cursor-portal-executable/usr/bin/cursor"
+    "$HOME/repo/cursor-free-vip/squashfs-root/usr/bin/cursor"
 )
 
 # Find Cursor installation path
@@ -121,7 +121,7 @@ find_cursor_resources() {
         "/usr/share/cursor"
         "/opt/cursor"
         "$HOME/.local/share/cursor"
-        "$HOME/.cursor-portal-executable/usr/share/cursor"
+        "$HOME/repo/cursor-free-vip/squashfs-root/usr/share/cursor"
     )
     
     for path in "${resource_paths[@]}"; do
@@ -166,12 +166,12 @@ check_and_kill_cursor() {
     get_process_details() {
         local process_name="$1"
         log_debug "Getting details for $process_name process:"
-        ps aux | grep -i "cursor" | grep -v grep | grep -v "cursor_linux_id_modifier.sh"
+        ps aux | grep -i "cursor" | grep -v grep | grep -v "cursor_linux_id_modifier_en.sh"
     }
     
     while [ $attempt -le $max_attempts ]; do
         # Use precise matching to get Cursor processes, excluding current script and grep process
-        CURSOR_PIDS=$(ps aux | grep -i "cursor" | grep -v "grep" | grep -v "cursor_linux_id_modifier.sh" | awk '{print $2}' || true)
+        CURSOR_PIDS=$(ps aux | grep -i "cursor" | grep -v "grep" | grep -v "cursor_linux_id_modifier_en.sh" | awk '{print $2}' || true)
         
         if [ -z "$CURSOR_PIDS" ]; then
             log_info "No running Cursor processes found"
@@ -193,7 +193,7 @@ check_and_kill_cursor() {
         sleep 1
         
         # Recheck if processes are still running, excluding current script and grep process
-        if ! ps aux | grep -i "cursor" | grep -v "grep" | grep -v "cursor_linux_id_modifier.sh" > /dev/null; then
+        if ! ps aux | grep -i "cursor" | grep -v "grep" | grep -v "cursor_linux_id_modifier_en.sh" > /dev/null; then
             log_info "Cursor processes successfully terminated"
             return 0
         fi

@@ -78,6 +78,7 @@ CURSOR_BIN_PATHS=(
     "/opt/cursor/cursor"
     "/snap/bin/cursor"
     "$HOME/.cursor-portal-executable/usr/bin/cursor"
+    "$HOME/repo/cursor-free-vip/squashfs-root/usr/bin/cursor"
 )
 
 # 找到Cursor安装路径
@@ -122,6 +123,7 @@ find_cursor_resources() {
         "/opt/cursor"
         "$HOME/.local/share/cursor"
         "$HOME/.cursor-portal-executable/usr/share/cursor"
+        "$HOME/repo/cursor-free-vip/squashfs-root/usr/share/cursor"
     )
     
     for path in "${resource_paths[@]}"; do
