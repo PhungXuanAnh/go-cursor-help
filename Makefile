@@ -1,6 +1,9 @@
 run:
 	sudo -E scripts/run/cursor_linux_id_modifier.sh
 
+run-en:
+	sudo -E scripts/run/cursor_linux_id_modifier_en.sh
+
 rebase:
 	git remote add upstream https://github.com/yuaotian/go-cursor-help.git ||:
 	git pull upstream master
