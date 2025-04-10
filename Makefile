@@ -12,3 +12,6 @@ rebase:
 
 run-cursor-ide:
 	~/repo/cursor-free-vip/squashfs-root/AppRun
+
+git-create-tag:
+	scripts/create_tag.sh
